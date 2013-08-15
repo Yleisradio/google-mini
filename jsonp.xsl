@@ -34,7 +34,7 @@
       <xsl:if test="GM">
         <xsl:text disable-output-escaping="yes">    "keymatch": [
 </xsl:text>     <xsl:apply-templates select="GM" />
-<xsl:text>  ],
+<xsl:text>    ],
 </xsl:text>
       </xsl:if>
       
@@ -49,7 +49,8 @@
     </xsl:call-template>
     
     <xsl:text disable-output-escaping="yes">
-})</xsl:text>  
+})
+</xsl:text>  
     </xsl:template>
     
     
@@ -76,8 +77,7 @@
         "have_next": "1"</xsl:text>
         </xsl:if>
 <xsl:text>
-}
-    </xsl:text>
+    }</xsl:text>
 
     </xsl:template>
 
@@ -94,42 +94,40 @@
     </xsl:template>
 
     <xsl:template match="RES">  
-        <xsl:text disable-output-escaping="yes">    "results": [
-</xsl:text>
+        <xsl:text disable-output-escaping="yes">    "results": [</xsl:text>
         <xsl:apply-templates select="R"/>
         <xsl:text disable-output-escaping="yes">
-],</xsl:text>
+    ],</xsl:text>
     </xsl:template>
 
     <xsl:template match="R">
         <xsl:text disable-output-escaping="yes">
-            {</xsl:text>
+        {
+</xsl:text>
         <xsl:apply-templates select="U"/>
         <xsl:apply-templates select="T"/>
         <xsl:apply-templates select="S"/>
         <xsl:apply-templates select="HAS"/>
         <xsl:if test="string(@MIME)">
             <xsl:text disable-output-escaping="yes">,
-                "mime": "</xsl:text>
+            "mime": "</xsl:text>
             <xsl:value-of select ="@MIME" />
-            <xsl:text disable-output-escaping="yes">"
-</xsl:text>
+            <xsl:text disable-output-escaping="yes">"</xsl:text>
         </xsl:if>
         <xsl:text disable-output-escaping="yes">
-            }</xsl:text>
-        <xsl:if test="position() != last()"><xsl:text>,
-</xsl:text></xsl:if>
+        }</xsl:text>
+        <xsl:if test="position() != last()"><xsl:text>,</xsl:text></xsl:if>
     </xsl:template>
 
     <xsl:template match="U">
-        <xsl:text disable-output-escaping="yes">                "url": "</xsl:text>
+        <xsl:text disable-output-escaping="yes">            "url": "</xsl:text>
         <xsl:value-of select="." />
         <xsl:text disable-output-escaping="yes">",
 </xsl:text>
     </xsl:template>
 
     <xsl:template match="T">
-        <xsl:text disable-output-escaping="yes">                "title": "</xsl:text>
+        <xsl:text disable-output-escaping="yes">            "title": "</xsl:text>
         <xsl:call-template name="replace_apos">
             <xsl:with-param name="string" select="." />
         </xsl:call-template>
@@ -138,7 +136,7 @@
     </xsl:template>
 
     <xsl:template match="S">
-        <xsl:text disable-output-escaping="yes">                "summary": "</xsl:text>
+        <xsl:text disable-output-escaping="yes">            "summary": "</xsl:text>
         <xsl:call-template name="replace_apos">
             <xsl:with-param name="string" select="." />
         </xsl:call-template>
@@ -148,10 +146,9 @@
     <xsl:template match="HAS">
         <xsl:if test="string(C/@SZ)">
             <xsl:text disable-output-escaping="yes">,
-                "size": "</xsl:text>
+            "size": "</xsl:text>
             <xsl:value-of select="C/@SZ" />
-            <xsl:text disable-output-escaping="yes">"
-</xsl:text>
+            <xsl:text disable-output-escaping="yes">"</xsl:text>
         </xsl:if>
     </xsl:template>
     
