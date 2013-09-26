@@ -1,4 +1,4 @@
-﻿<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Template to produce results in JSON format
   ** Philip McAllister, 01/10/2012
@@ -137,8 +137,13 @@
 
     <xsl:template match="S">
         <xsl:text disable-output-escaping="yes">            "summary": "</xsl:text>
-        <xsl:call-template name="replace_apos">
-            <xsl:with-param name="string" select="." />
+        <xsl:variable name="replaced_apos">
+            <xsl:call-template name="replace_apos">
+                <xsl:with-param name="string" select="." />
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:call-template name="replace_br">
+            <xsl:with-param name="string" select="$replaced_apos" />
         </xsl:call-template>
         <xsl:text disable-output-escaping="yes">"</xsl:text>
     </xsl:template>
@@ -183,4 +188,14 @@
                 <xsl:with-param name="replace" select="'&amp;#39;'"/>
         </xsl:call-template>
     </xsl:template>
+
+    <xsl:template name="replace_br">
+        <xsl:param name="string"/>
+        <xsl:call-template name="replace_string">
+                <xsl:with-param name="string" select="$string"/>
+                <xsl:with-param name="find" select="'&lt;br&gt;'"/>
+                <xsl:with-param name="replace" select="''"/>
+        </xsl:call-template>
+    </xsl:template>
+
 </xsl:stylesheet>
