@@ -114,6 +114,12 @@
             <xsl:value-of select ="@MIME" />
             <xsl:text disable-output-escaping="yes">"</xsl:text>
         </xsl:if>
+        <xsl:if test="string(FS[@NAME='date']/@VALUE)">
+            <xsl:text disable-output-escaping="yes">,
+            "date": "</xsl:text>
+            <xsl:value-of select ="FS[@NAME='date']/@VALUE" />
+            <xsl:text disable-output-escaping="yes">"</xsl:text>
+        </xsl:if>
         <xsl:text disable-output-escaping="yes">
         }</xsl:text>
         <xsl:if test="position() != last()"><xsl:text>,</xsl:text></xsl:if>
