@@ -27,7 +27,9 @@
         </xsl:choose>
 
         <xsl:text disable-output-escaping="yes">    "query": "</xsl:text>
-    <xsl:value-of select="Q" />
+            <xsl:call-template name="replace_apos">
+                <xsl:with-param name="string" select="Q" />
+            </xsl:call-template>
     <xsl:text>",
 </xsl:text>
 
@@ -52,7 +54,6 @@
 })
 </xsl:text>  
     </xsl:template>
-    
     
     <!-- Results settings -->
     <xsl:template name="results_navigation_wrapper">
@@ -163,6 +164,7 @@
         </xsl:if>
     </xsl:template>
     
+
     <!-- *** Find and replace *** -->
     <xsl:template name="replace_string">
       <xsl:param name="find"/>
@@ -187,11 +189,11 @@
 
     <xsl:template name="replace_apos">
         <xsl:param name="string"/>
-        <xsl:variable name="apos">'</xsl:variable>
+        <xsl:variable name="apos">"</xsl:variable>
         <xsl:call-template name="replace_string">
                 <xsl:with-param name="string" select="$string"/>
                 <xsl:with-param name="find" select="$apos"/>
-                <xsl:with-param name="replace" select="'&amp;#39;'"/>
+                <xsl:with-param name="replace" select="'&amp;#34;'"/>
         </xsl:call-template>
     </xsl:template>
 
