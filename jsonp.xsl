@@ -166,7 +166,7 @@
 
         <!--Include image from meta tag in results list-->
         <xsl:for-each select="MT">
-            <xsl:if test="@N='og:image' and @V!=''">
+            <xsl:if test="@N='gsa_image' and @V!=''">
                 <xsl:text disable-output-escaping="yes">,
                     "image": "</xsl:text>
                 <xsl:value-of select ="@V" />
