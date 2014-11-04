@@ -44,7 +44,7 @@
 
             <xsl:text disable-output-escaping="yes">    "dynamic_navigation": [
             </xsl:text>     
-            <xsl:apply-templates select="/GSP/RES/PARM/PMT" />
+            <xsl:apply-templates select="/GSP/RES/PARM" />
             <xsl:text>    ],
             </xsl:text>
       
@@ -99,22 +99,28 @@
     </xsl:template>
 
     <!-- Dynamic Navigation -->
-    <xsl:template match="PMT">
+    <xsl:template match="PARM">
+        <xsl:for-each select="PMT">
         <xsl:for-each select="PV[position() &lt; 11 and @C != '0']">
         <xsl:text disable-output-escaping="yes">    {
         </xsl:text>
         <xsl:text disable-output-escaping="yes">        "name": "</xsl:text>
-	<xsl:value-of select="@V"/>
+    <xsl:value-of select="@V"/>
         <xsl:text disable-output-escaping="yes">",
             "count": "</xsl:text>
-	<xsl:value-of select='@C'/>
+    <xsl:value-of select='@C'/>
         <xsl:text disable-output-escaping="yes">"
             }</xsl:text>
         <xsl:if test="position() != last()">
             <xsl:text>,
             </xsl:text>
         </xsl:if>
-	</xsl:for-each>
+    </xsl:for-each>
+        <xsl:if test="position() != last()">
+            <xsl:text>,
+            </xsl:text>
+        </xsl:if>
+        </xsl:for-each>
     </xsl:template>
 
     <!-- Keymatch -->
