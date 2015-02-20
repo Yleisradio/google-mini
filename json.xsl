@@ -170,6 +170,18 @@
             </xsl:if>
         </xsl:for-each>
 
+        <!--Include keywords from meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='keywords' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "keywords": "</xsl:text>
+				        <xsl:call-template name="replace_apos">
+				            <xsl:with-param name="string" select="@V" />
+				        </xsl:call-template>
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
         <xsl:text disable-output-escaping="yes">
             }</xsl:text>
         <xsl:if test="position() != last()">
