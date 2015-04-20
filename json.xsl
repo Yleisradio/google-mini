@@ -160,7 +160,7 @@
             <xsl:text disable-output-escaping="yes">"</xsl:text>
         </xsl:if>
 
-        <!--Include image from meta tag in results list-->
+        <!--Include image meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='gsa_image' and @V!=''">
                 <xsl:text disable-output-escaping="yes">,
@@ -170,7 +170,7 @@
             </xsl:if>
         </xsl:for-each>
 
-        <!--Include article-id from meta tag in results list-->
+        <!--Include article-id meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='article-id' and @V!=''">
                 <xsl:text disable-output-escaping="yes">,
@@ -180,7 +180,87 @@
             </xsl:if>
         </xsl:for-each>
 
-        <!--Include keywords from meta tag in results list-->
+        <!--Include authors meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='authors' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "authors": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include category meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='category' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "categories": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include category meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='media' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "media": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include media-expiration-date meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='media-expiration-date' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "mediaExpirationDate": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include areena-channel meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='areena-channel' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "areenaChannel": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include areena-service meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='areena-service' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "areenaService": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include page-type meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='page-type' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "pageType": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include serie-id meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='serie-id' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "serieId": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include keywords meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='keywords' and @V!=''">
                 <xsl:text disable-output-escaping="yes">,
