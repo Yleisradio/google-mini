@@ -210,6 +210,16 @@
             </xsl:if>
         </xsl:for-each>
 
+        <!--Include media-start-date meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='media-start-date' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "mediaStartDate": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
         <!--Include media-expiration-date meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='media-expiration-date' and @V!=''">
@@ -255,6 +265,36 @@
             <xsl:if test="@N='serie-id' and @V!=''">
                 <xsl:text disable-output-escaping="yes">,
                     "serieId": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include program-id meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='program-id' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "programId": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include original-title meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='original-title' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "originalTitle": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include original-description meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='original-description' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "originalDescription": "</xsl:text>
                 <xsl:value-of select ="@V" />
                 <xsl:text disable-output-escaping="yes">"</xsl:text>
             </xsl:if>
