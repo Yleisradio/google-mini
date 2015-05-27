@@ -200,6 +200,26 @@
             </xsl:if>
         </xsl:for-each>
 
+        <!--Include program-title meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='program-title' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "programTitle": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include program-description meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='program-description' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "programDescription": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
         <!--Include category meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='media' and @V!=''">
