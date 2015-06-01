@@ -320,6 +320,26 @@
             </xsl:if>
         </xsl:for-each>
 
+        <!--Include stream-starts meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='stream-starts' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "streamStarts": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
+        <!--Include page-views meta tag in results list-->
+        <xsl:for-each select="MT">
+            <xsl:if test="@N='page-views' and @V!=''">
+                <xsl:text disable-output-escaping="yes">,
+                    "pageViews": "</xsl:text>
+                <xsl:value-of select ="@V" />
+                <xsl:text disable-output-escaping="yes">"</xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+
         <!--Include keywords meta tag in results list-->
         <xsl:for-each select="MT">
             <xsl:if test="@N='keywords' and @V!=''">
