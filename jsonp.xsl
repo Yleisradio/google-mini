@@ -211,9 +211,9 @@
             </xsl:call-template>
         </xsl:variable>
         <xsl:variable name="replaced_br">
-                <xsl:call-template name="replace_br">
-                    <xsl:with-param name="string" select="$replaced_apos" />
-                </xsl:call-template>
+            <xsl:call-template name="replace_br">
+                <xsl:with-param name="string" select="$replaced_apos" />
+            </xsl:call-template>
         </xsl:variable>
         <xsl:call-template name="escape_backslash">
             <xsl:with-param name="string" select="$replaced_br" />
