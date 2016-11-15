@@ -382,8 +382,13 @@
                 <xsl:with-param name="string" select="." />
             </xsl:call-template>
         </xsl:variable>
-        <xsl:call-template name="replace_br">
-            <xsl:with-param name="string" select="$replaced_apos" />
+        <xsl:variable name="replaced_br">
+                <xsl:call-template name="replace_br">
+                    <xsl:with-param name="string" select="$replaced_apos" />
+                </xsl:call-template>
+        </xsl:variable>
+        <xsl:call-template name="escape">
+            <xsl:with-param name="string" select="$replaced_br" />
         </xsl:call-template>
         <xsl:text disable-output-escaping="yes">"</xsl:text>
     </xsl:template>
@@ -436,6 +441,15 @@
             <xsl:with-param name="string" select="$string"/>
             <xsl:with-param name="find" select="'&lt;br&gt;'"/>
             <xsl:with-param name="replace" select="''"/>
+        </xsl:call-template>
+    </xsl:template>
+
+    <xsl:template name="escape">
+        <xsl:param name="string"/>
+        <xsl:call-template name="replace_string">
+            <xsl:with-param name="string" select="$string"/>
+            <xsl:with-param name="find" select="'\'"/>
+            <xsl:with-param name="replace" select="'\\'"/>
         </xsl:call-template>
     </xsl:template>
 
