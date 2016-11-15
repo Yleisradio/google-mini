@@ -387,7 +387,7 @@
                     <xsl:with-param name="string" select="$replaced_apos" />
                 </xsl:call-template>
         </xsl:variable>
-        <xsl:call-template name="escape">
+        <xsl:call-template name="escape_backslash">
             <xsl:with-param name="string" select="$replaced_br" />
         </xsl:call-template>
         <xsl:text disable-output-escaping="yes">"</xsl:text>
@@ -444,7 +444,7 @@
         </xsl:call-template>
     </xsl:template>
 
-    <xsl:template name="escape">
+    <xsl:template name="escape_backslash">
         <xsl:param name="string"/>
         <xsl:call-template name="replace_string">
             <xsl:with-param name="string" select="$string"/>
